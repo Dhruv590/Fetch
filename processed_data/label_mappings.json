@@ -1,0 +1,12 @@
+{
+    "sentiment_mapping": {
+        "Negative": 0,
+        "Positive": 1
+    },
+    "category_mapping": {
+        "Technical Issues": 0,
+        "Positive Sentiment": 1,
+        "Negative Sentiment": 2,
+        "Purchase or Value Concerns": 3
+    }
+}
