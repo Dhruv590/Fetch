@@ -5,7 +5,7 @@
 
 - **Python**: Version 3.8 or higher
 - **Docker**: (Optional) For containerized environments
-- **CUDA**: (Optional) For GPU acceleration
+- **CUDA/Metal**: (Optional) For GPU acceleration or apple metal gpu acceleration
 
 ### Installation
 
