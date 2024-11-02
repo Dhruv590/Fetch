@@ -4,7 +4,11 @@ from transformers import AutoModel, AutoTokenizer
 from models.multitask_mpnet import MultiTaskMPNet
 import json
 from torch.utils.data import DataLoader, Dataset
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
+import warnings
+
+# Ignore all warnings
+warnings.filterwarnings("ignore")
 
 # Define paths
 model_path = '/Users/dhruv590/Projects/Fetch/models/multitask_mpnet'
@@ -37,7 +41,7 @@ class MultiTaskDataset(Dataset):
             'label_b': torch.tensor(self.labels_b[idx], dtype=torch.long)
         }
 
-# Function to calculate accuracy for both tasks
+# Function to evaluate the model and calculate relevant scores
 def evaluate_model(model, dataloader, device):
     model.eval()
     true_labels_a, pred_labels_a = [], []
@@ -69,7 +73,12 @@ def evaluate_model(model, dataloader, device):
     # Calculate accuracy for each task
     accuracy_a = accuracy_score(true_labels_a, pred_labels_a)
     accuracy_b = accuracy_score(true_labels_b, pred_labels_b)
-    return accuracy_a, accuracy_b
+    
+    # Calculate precision, recall, and F1-score for each task
+    report_a = classification_report(true_labels_a, pred_labels_a, target_names=list(inverse_category_mapping.values()))
+    report_b = classification_report(true_labels_b, pred_labels_b, target_names=list(inverse_sentiment_mapping.values()))
+    
+    return accuracy_a, accuracy_b, report_a, report_b
 
 # Main evaluation function
 def main():
@@ -91,9 +100,18 @@ def main():
     test_dataloader = DataLoader(test_dataset, batch_size=8, shuffle=False)
     
     # Evaluate the model
-    accuracy_a, accuracy_b = evaluate_model(model, test_dataloader, device)
-    print(f"Task A (Sentence Classification) Accuracy: {accuracy_a * 100:.2f}%")
-    print(f"Task B (Sentiment Analysis) Accuracy: {accuracy_b * 100:.2f}%")
+    accuracy_a, accuracy_b, report_a, report_b = evaluate_model(model, test_dataloader, device)
+    
+    # Print results in a nicely formatted way
+    print("=== Task A (Sentence Classification) Results ===")
+    print(f"Accuracy: {accuracy_a * 100:.2f}%")
+    print("Classification Report:")
+    print(report_a)
+    
+    print("\n=== Task B (Sentiment Analysis) Results ===")
+    print(f"Accuracy: {accuracy_b * 100:.2f}%")
+    print("Classification Report:")
+    print(report_b)
 
 if __name__ == "__main__":
     main()
