@@ -107,6 +107,7 @@
     ```
 
     **Note:** With a small synthetic dataset, loss values may not reflect meaningful learning. Use a larger and more diverse dataset for better results.
+    **Model Weights:** You can downloade the model weights here - https://drive.google.com/drive/folders/14z8zqBjJtl3DSw_05T0yTO1upEdoVTzY?usp=drive_link
 
 ### Inference and Exploration
 
