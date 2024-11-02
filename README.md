@@ -41,7 +41,7 @@
 
 2. **Prepare Your Dataset**
 
-    - **Ensure your `your_data.csv`** follows the structure outlined in `data/README.md`.
+    - **Ensure your `data.csv`** follows the structure outlined in `data/README.md`.
     - **Example:**
     
         ```csv
@@ -57,6 +57,7 @@
 
     ```bash
     cd ..
+    cd processing_data
     python prepare_dataset.py
     ```
 
@@ -70,10 +71,10 @@
     Data Split into Training and Testing Sets
     Training Set Size: 800
     Testing Set Size: 200
-    Processed data saved to processed_data
+    Processed data saved to processing_data
     ```
 
-    **Note:** Adjust the dataset size as needed. Ensure that `processed_data/` contains `train.csv`, `test.csv`, and `label_mappings.json`.
+    **Note:** Adjust the dataset size as needed. Ensure that `processing_data/` contains `train.csv`, `test.csv`, and `label_mappings.json`.
 
 ### Training the Model
 
