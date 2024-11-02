@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Ignore large model files
+models/multitask_mpnet/model.safetensors
+
 # C extensions
 *.so
 
