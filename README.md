@@ -12,8 +12,8 @@
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/dhruv590/multi-task-sentence-transformer.git
-    cd multi-task-sentence-transformer
+    git clone https://github.com/dhruv590/fetch.git
+    cd fetch
     ```
 
 2. **Set Up a Virtual Environment**
