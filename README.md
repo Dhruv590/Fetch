@@ -12,7 +12,7 @@
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/yourusername/multi-task-sentence-transformer.git
+    git clone https://github.com/dhruv590/multi-task-sentence-transformer.git
     cd multi-task-sentence-transformer
     ```
 
